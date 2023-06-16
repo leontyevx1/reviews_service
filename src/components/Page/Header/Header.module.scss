@@ -1,0 +1,10 @@
+.header_container {
+  height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  @media (max-width: 960px) {
+    height: 92px;
+    transition: 0.4s;
+  }
+}

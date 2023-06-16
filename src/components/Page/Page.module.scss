@@ -1,0 +1,34 @@
+.page {
+  width: 1280px;
+  min-height: 534px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1280px) {
+  .page {
+    transition: 0.4s;
+    width: 960px;
+  }
+}
+
+@media (max-width: 960px) {
+  .page {
+    transition: 0.4s;
+    width: 767px;
+  }
+}
+
+@media (max-width: 767px) {
+  .page {
+    transition: 0.4s;
+    width: 430px;
+  }
+}
+
+@media (max-width: 430px) {
+  .page {
+    transition: 0.4s;
+    width: 320px;
+  }
+}

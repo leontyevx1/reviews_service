@@ -1,0 +1,321 @@
+$bp-md: 319px;
+$bp-lg: 700px;
+
+:root {
+  --d: 700ms;
+  --e: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.container {
+  @media (max-width: 1280px) {
+    transition: 0.4s;
+    width: 240px;
+  }
+  @media (max-width: 960px) {
+    transition: 0.4s;
+    width: 160px;
+  }
+  @media (max-width: 767px) {
+    transition: 0.4s;
+  }
+  @media (max-width: 430px) {
+    transition: 0.4s;
+    width: 217px;
+  }
+}
+
+.wrapper {
+  position: relative;
+  border-radius: 6px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  width: 353px;
+  height: 382px;
+  text-align: center;
+  color: whitesmoke;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    transition: transform calc(var(--d) * 1.5) var(--e);
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    transition: 0.2s;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    pointer-events: none;
+    background-image: linear-gradient(
+                    to bottom,
+                    hsla(0, 0%, 0%, 0) 0%,
+                    hsla(0, 0%, 0%, 0.009) 11.7%,
+                    hsla(0, 0%, 0%, 0.034) 22.1%,
+                    hsla(0, 0%, 0%, 0.072) 31.2%,
+                    hsla(0, 0%, 0%, 0.123) 39.4%,
+                    hsla(0, 0%, 0%, 0.182) 46.6%,
+                    hsla(0, 0%, 0%, 0.249) 53.1%,
+                    hsla(0, 0%, 0%, 0.320) 58.9%,
+                    hsla(0, 0%, 0%, 0.394) 64.3%,
+                    hsla(0, 0%, 0%, 0.468) 69.3%,
+                    hsla(0, 0%, 0%, 0.540) 74.1%,
+                    hsla(0, 0%, 0%, 0.607) 78.8%,
+                    hsla(0, 0%, 0%, 0.668) 83.6%,
+                    hsla(0, 0%, 0%, 0.721) 88.7%,
+                    hsla(0, 0%, 0%, 0.762) 94.1%,
+                    hsla(0, 0%, 0%, 0.790) 100%
+    );
+  }
+}
+
+.content {
+  background: rgba(111, 135, 141, 0.8);
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  padding: 0 10px 0 16px;
+  transition: transform var(--d) var(--e);
+  z-index: 1;
+
+  &__btn {
+    display: flex;
+    align-items: start;
+  }
+}
+
+.column {
+  width: 100%;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__title{
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    img {
+      height: 26px;
+      margin-left: 4px;
+    }
+  }
+}
+
+.description {
+  max-height: 270px;
+  min-height: 270px;
+  overflow: auto;
+
+  &__copy {
+    font-size: 18px;
+    line-height: 21px;
+    padding-top: 50px;
+    font-style: normal;
+    font-weight: 500;
+    text-align: left;
+  }
+}
+
+.btn {
+  display: flex;
+  align-items: start;
+  font-size: 14px;
+}
+
+.bg_image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+@media (hover: hover) and (min-width: $bp-md) {
+  .wrapper:after {
+    transform: translateY(0);
+  }
+
+  .content {
+    transform: translateY(calc(100% - 50px));
+
+    > *:not(.column__title) {
+      opacity: 1;
+      transform: translateY(0.8rem);
+      transition:
+              transform var(--d) var(--e),
+              opacity var(--d) var(--e);
+    }
+  }
+
+  .wrapper:hover,
+  .wrapper:focus-within {
+    align-items: center;
+
+    &:before { transform: translateY(-4%); }
+    &:after { transform: translateY(-50%); }
+
+    .content {
+      transform: translateY(0);
+
+      > *:not(.column__title) {
+        opacity: 1;
+        transform: translateY(0.8rem);
+        transition-delay: calc(var(--d) / 2);
+      }
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .wrapper {
+    width: 285px;
+    height: 290px;
+    transition: 0.4s;
+  }
+  .column__title {
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.4s;
+  }
+  .column__rating {
+    font-size: 20px;
+    transition: 0.4s;
+    img {
+      width: 20px;
+      height: 20px;
+      transition: 0.4s;
+    }
+  }
+  .description {
+    width: 230px;
+    min-height: 205px;
+    transition: 0.4s;
+  }
+  .description__copy {
+    font-size: 16px;
+    padding-top: 20px;
+    transition: 0.4s;
+  }
+  .content {
+    transform: translateY(calc(100% - 45px));
+  }
+}
+
+@media (max-width: 960px) {
+  .wrapper {
+    width: 225px;
+    height: 230px;
+    transition: 0.4s;
+  }
+  .column__title {
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.4s;
+  }
+  .column__rating {
+    font-size: 15px;
+    transition: 0.4s;
+    img {
+      width: 14px;
+      height: 14px;
+      transition: 0.4s;
+    }
+  }
+  .description {
+    width: 180px;
+    min-height: 155px;
+    transition: 0.4s;
+  }
+  .description__copy {
+    font-size: 12px;
+    font-weight: 400;
+    padding-top: 10px;
+    line-height: 0.8rem;
+    transition: 0.4s;
+  }
+  .content {
+    transform: translateY(calc(100% - 40px));
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    width: 165px;
+    height: 175px;
+    transition: 0.4s;
+  }
+  .column__title {
+    font-size: 10px;
+    font-weight: 400;
+    transition: 0.4s;
+  }
+  .column__rating {
+    font-size: 13px;
+    transition: 0.4s;
+    img {
+      width: 14px;
+      height: 14px;
+      transition: 0.4s;
+    }
+  }
+  .description {
+    width: 145px;
+    min-height: 110px;
+    transition: 0.4s;
+  }
+  .description__copy {
+    font-size: 9px;
+    padding-top: 10px;
+    line-height: 0.8rem;
+    transition: 0.4s;
+  }
+  .content {
+    transform: translateY(calc(100% - 40px));
+  }
+}
+
+@media (max-width: 430px) {
+  .wrapper {
+    width: 220px;
+    height: 210px;
+    transition: 0.4s;
+  }
+  .column__title {
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.4s;
+  }
+  .column__rating {
+    font-size: 18px;
+    transition: 0.4s;
+    img {
+      width: 16px;
+      height: 16px;
+      transition: 0.4s;
+    }
+  }
+  .description {
+    width: 195px;
+    min-height: 137px;
+    transition: 0.4s;
+  }
+  .description__copy {
+    font-size: 12px;
+    padding-top: 10px;
+    line-height: 0.8rem;
+    transition: 0.4s;
+  }
+  .content {
+    transform: translateY(calc(100% - 40px));
+  }
+}
