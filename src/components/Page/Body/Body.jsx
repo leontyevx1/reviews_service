@@ -6,8 +6,7 @@ import Card from "./Card/Card";
 import Preloader from "../../../UI/Preloader/Preloader";
 
 const Body = () => {
-
-    const [start, setStarter] = useState(0);
+    const [start, setStart] = useState(0);
     const [comments, setComments] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -19,13 +18,9 @@ const Body = () => {
         })
     }
 
-    const setStart = () => {
-        setStarter(start + 3)
-    }
-
     useEffect(() => {
         getComments(start)
-        setStarter(+ 3)
+        setStart(val => val + 3)
     },[])
 
     return (
@@ -35,9 +30,13 @@ const Body = () => {
             </div>
             {!isLoading ?
                 <Button onClick={() => {
-                getComments(start);
-                setStart()
-            }}>More</Button> : <Preloader/>}
+                    getComments(start);
+                    setStart(val => val + 3)
+                }}>
+                    More
+                </Button>
+                : <Preloader/>
+            }
         </div>
     );
 };
